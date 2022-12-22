@@ -53,4 +53,11 @@ class Item
     {
         $this->setSellIn($this->getSellIn() - 1);
     }
+
+    public function decreaseQuality()
+    {
+        if ($this->getQuality() > 0) {
+            $this->setQuality($this->getQuality() - 1);
+        }
+    }
 }

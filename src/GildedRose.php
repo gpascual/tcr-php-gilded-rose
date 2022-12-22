@@ -47,20 +47,13 @@ class GildedRose
                 return;
             }
 
-            self::decreaseQuality($iValue);
+            $iValue->decreaseQuality();
 
             $iValue->updateSellIn();
 
             if ($iValue->getSellIn() < 0) {
-                self::decreaseQuality($iValue);
+                $iValue->decreaseQuality();
             }
-        }
-    }
-
-    public static function decreaseQuality(Item $iValue): void
-    {
-        if ($iValue->getQuality() > 0) {
-            $iValue->setQuality($iValue->getQuality() - 1);
         }
     }
 
