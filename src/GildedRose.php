@@ -43,6 +43,24 @@ class GildedRose
                         }
                     }
                 }
+
+                if ('Sulfuras, Hand of Ragnaros' != $iValue->getName()) {
+                    $iValue->setSellIn($iValue->getSellIn() - 1);
+                }
+
+                if ($iValue->getSellIn() < 0) {
+                    if ('Backstage passes to a TAFKAL80ETC concert' != $iValue->getName()) {
+                        if ($iValue->getQuality() > 0) {
+                            if ('Sulfuras, Hand of Ragnaros' != $iValue->getName()) {
+                                $iValue->setQuality($iValue->getQuality() - 1);
+                            }
+                        }
+                    } else {
+                        $iValue->setQuality($iValue->getQuality() - $iValue->getQuality());
+                    }
+                }
+
+                return;
             } else {
                 if ($iValue->getQuality() > 0) {
                     if ('Sulfuras, Hand of Ragnaros' != $iValue->getName()) {
