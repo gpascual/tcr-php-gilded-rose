@@ -9,9 +9,9 @@ use GildedRose\SulfurasItem;
 
 class ItemBuilder
 {
-    var $name;
-    var $sellIn;
-    var $quality;
+    public $name;
+    public $sellIn;
+    public $quality;
 
     private function __construct()
     {
@@ -20,47 +20,42 @@ class ItemBuilder
         $this->quality = 10;
     }
 
-    public static function newItem()
+    public static function newItem(): ItemBuilder
     {
         return new ItemBuilder();
     }
 
-    public function withName(
-        $name
-    ) {
+    public function withName($name): static
+    {
         $this->name = $name;
         return $this;
     }
 
-    public function withSellIn(
-        $sellIn
-    ) {
+    public function withSellIn($sellIn): static {
         $this->sellIn = $sellIn;
         return $this;
     }
 
-    public function withQuality(
-        $quality
-    ) {
+    public function withQuality($quality): static {
         $this->quality = $quality;
         return $this;
     }
 
-    public function build()
+    public function build(): Item
     {
-        switch ($this->name) {
-            case 'Aged Brie':
-                return new AgedBrieItem($this->name, $this->sellIn, $this->quality);
-            case 'Sulfuras, Hand of Ragnaros':
-                return new SulfurasItem($this->name, $this->sellIn, $this->quality);
-            case 'Backstage passes to a TAFKAL80ETC concert':
-                return new BackstageItem($this->name, $this->sellIn, $this->quality);
-        }
-
-        return new Item(
-            $this->name,
-            $this->sellIn,
-            $this->quality
-        );
+        return match ($this->name) {
+            'Aged Brie' => new AgedBrieItem($this->name, $this->sellIn, $this->quality),
+            'Sulfuras, Hand of Ragnaros' => new SulfurasItem($this->name, $this->sellIn, $this->quality),
+            'Backstage passes to a TAFKAL80ETC concert' => new BackstageItem(
+                $this->name,
+                $this->sellIn,
+                $this->quality
+            ),
+            default => new Item(
+                $this->name,
+                $this->sellIn,
+                $this->quality
+            ),
+        };
     }
 }
