@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+# { bin/phpunit --bootstrap vendor/autoload.php test/ && { git add . ; git commit -m } } || git restore -SW .
+bin/phpunit --bootstrap vendor/autoload.php test/
+if [[ $? > 0 ]]; then
+  echo "Restoring changes..."
+  git restore -SW .
+  exit 1
+fi
+
+git add .
+git commit

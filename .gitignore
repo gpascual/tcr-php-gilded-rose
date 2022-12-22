@@ -1,1 +1,5 @@
-*.swp
+/bin/
+!/bin/tcr
+/vendor/
+/composer.lock
+/.phpunit.result.cache

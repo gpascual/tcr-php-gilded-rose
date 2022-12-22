@@ -1,9 +1,11 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
+
 include_once 'src/GildedRose.php';
 include_once 'test/ItemBuilder.php';
 
-class GildedRoseTest extends PHPUnit_Framework_TestCase {
+class GildedRoseTest extends TestCase {
 
 	public function test_items_degradan_calidad(
 	) {
