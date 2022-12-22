@@ -20,7 +20,12 @@ class BackstageItem extends Item
         $this->updateSellIn();
 
         if ($this->getSellIn() < 0) {
-            $this->setQuality($this->getQuality() - $this->getQuality());
+            $this->decreaseQuality();
         }
+    }
+
+    public function decreaseQuality()
+    {
+        $this->setQuality(0);
     }
 }
