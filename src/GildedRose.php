@@ -13,7 +13,7 @@ class GildedRose
                     $iValue->setQuality($iValue->getQuality() + 1);
                 }
 
-                $iValue->setSellIn($iValue->getSellIn() - 1);
+                self::decreaseSellIn($iValue);
 
                 if ($iValue->getSellIn() < 0) {
                     if ($iValue->getQuality() < 50) {
@@ -40,7 +40,7 @@ class GildedRose
                     }
                 }
 
-                $iValue->setSellIn($iValue->getSellIn() - 1);
+                self::decreaseSellIn($iValue);
 
                 if ($iValue->getSellIn() < 0) {
                     $iValue->setQuality($iValue->getQuality() - $iValue->getQuality());
@@ -55,7 +55,7 @@ class GildedRose
 
             self::decreaseQuality($iValue);
 
-            $iValue->setSellIn($iValue->getSellIn() - 1);
+            self::decreaseSellIn($iValue);
 
             if ($iValue->getSellIn() < 0) {
                 self::decreaseQuality($iValue);
@@ -68,5 +68,10 @@ class GildedRose
         if ($iValue->getQuality() > 0) {
             $iValue->setQuality($iValue->getQuality() - 1);
         }
+    }
+
+    public static function decreaseSellIn(mixed $iValue): void
+    {
+        $iValue->setSellIn($iValue->getSellIn() - 1);
     }
 }
