@@ -71,4 +71,11 @@ class Item
             $this->decreaseQuality();
         }
     }
+
+    public function increaseQuality()
+    {
+        if ($this->getQuality() < 50) {
+            $this->setQuality($this->getQuality() + 1);
+        }
+    }
 }
