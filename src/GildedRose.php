@@ -23,28 +23,7 @@ class GildedRose
                 return;
             }
 
-            if ('Backstage passes to a TAFKAL80ETC concert' == $iValue->getName()) {
-                $iValue->increaseQuality();
-
-                if ($iValue->getSellIn() < 11) {
-                    $iValue->increaseQuality();
-                }
-
-                if ($iValue->getSellIn() < 6) {
-                    $iValue->increaseQuality();
-                }
-
-                $iValue->updateSellIn();
-
-                if ($iValue->getSellIn() < 0) {
-                    $iValue->setQuality($iValue->getQuality() - $iValue->getQuality());
-                }
-
-                return;
-            }
-
             $iValue->updateQuality();
         }
     }
-
 }

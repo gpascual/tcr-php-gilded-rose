@@ -2,6 +2,7 @@
 
 namespace GildedRose\Test;
 
+use GildedRose\BackstageItem;
 use GildedRose\Item;
 use GildedRose\SulfurasItem;
 
@@ -49,6 +50,8 @@ class ItemBuilder
         switch ($this->name) {
             case 'Sulfuras, Hand of Ragnaros':
                 return new SulfurasItem($this->name, $this->sellIn, $this->quality);
+            case 'Backstage passes to a TAFKAL80ETC concert':
+                return new BackstageItem($this->name, $this->sellIn, $this->quality);
         }
 
         return new Item(
