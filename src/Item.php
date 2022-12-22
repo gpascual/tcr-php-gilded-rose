@@ -60,4 +60,15 @@ class Item
             $this->setQuality($this->getQuality() - 1);
         }
     }
+
+    public function updateQuality()
+    {
+        $this->decreaseQuality();
+
+        $this->updateSellIn();
+
+        if ($this->getSellIn() < 0) {
+            $this->decreaseQuality();
+        }
+    }
 }
