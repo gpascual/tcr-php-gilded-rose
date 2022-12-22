@@ -2,6 +2,7 @@
 
 namespace GildedRose\Test;
 
+use GildedRose\AgedBrieItem;
 use GildedRose\BackstageItem;
 use GildedRose\Item;
 use GildedRose\SulfurasItem;
@@ -48,6 +49,8 @@ class ItemBuilder
     public function build()
     {
         switch ($this->name) {
+            case 'Aged Brie':
+                return new AgedBrieItem($this->name, $this->sellIn, $this->quality);
             case 'Sulfuras, Hand of Ragnaros':
                 return new SulfurasItem($this->name, $this->sellIn, $this->quality);
             case 'Backstage passes to a TAFKAL80ETC concert':
