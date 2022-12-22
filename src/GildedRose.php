@@ -32,7 +32,11 @@ class GildedRose
                     $iValue->setQuality($iValue->getQuality() + 1);
                 }
 
-                if ($iValue->getSellIn() < 11) {
+                if ($iValue->getSellIn() < 11 && $iValue->getSellIn() >= 6) {
+                    if ($iValue->getQuality() < 50) {
+                        $iValue->setQuality($iValue->getQuality() + 1);
+                    }
+                } elseif ($iValue->getSellIn() < 11) {
                     if ($iValue->getQuality() < 50) {
                         if ($iValue->getQuality() < 50) {
                             $iValue->setQuality($iValue->getQuality() + 1);
