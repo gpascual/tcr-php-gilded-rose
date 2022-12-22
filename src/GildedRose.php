@@ -1,6 +1,6 @@
 <?php
 
-require_once 'src/Item.php';
+namespace GildedRose;
 
 class GildedRose
 {

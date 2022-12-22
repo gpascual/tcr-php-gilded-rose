@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Item.php';
+namespace GildedRose;
 
 class SulfurasItem extends Item
 {

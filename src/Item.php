@@ -1,5 +1,7 @@
 <?php
 
+namespace GildedRose;
+
 class Item
 {
     var $name;

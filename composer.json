@@ -11,6 +11,16 @@
         }
     ],
     "require": {},
+    "autoload": {
+        "psr-4": {
+            "GildedRose\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "GildedRose\\Test\\": "test/"
+        }
+    },
     "config": {
         "bin-dir": "bin"
     }
