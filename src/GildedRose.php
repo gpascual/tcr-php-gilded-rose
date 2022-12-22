@@ -4,16 +4,19 @@ require_once 'src/Item.php';
 
 class GildedRose
 {
-    public static function updateQuality(
-        $items
-    ) {
+    /**
+     * @param Item[] $items
+     * @return void
+     */
+    public static function updateQuality(array $items)
+    {
         foreach ($items as $iValue) {
             if ('Aged Brie' == $iValue->getName()) {
                 if ($iValue->getQuality() < 50) {
                     $iValue->setQuality($iValue->getQuality() + 1);
                 }
 
-                self::decreaseSellIn($iValue);
+                $iValue->updateSellIn();
 
                 if ($iValue->getSellIn() < 0) {
                     if ($iValue->getQuality() < 50) {
@@ -40,7 +43,7 @@ class GildedRose
                     }
                 }
 
-                self::decreaseSellIn($iValue);
+                $iValue->updateSellIn();
 
                 if ($iValue->getSellIn() < 0) {
                     $iValue->setQuality($iValue->getQuality() - $iValue->getQuality());
@@ -55,7 +58,7 @@ class GildedRose
 
             self::decreaseQuality($iValue);
 
-            self::decreaseSellIn($iValue);
+            $iValue->updateSellIn();
 
             if ($iValue->getSellIn() < 0) {
                 self::decreaseQuality($iValue);
@@ -68,10 +71,5 @@ class GildedRose
         if ($iValue->getQuality() > 0) {
             $iValue->setQuality($iValue->getQuality() - 1);
         }
-    }
-
-    public static function decreaseSellIn(mixed $iValue): void
-    {
-        $iValue->setSellIn($iValue->getSellIn() - 1);
     }
 }
