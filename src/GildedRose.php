@@ -43,10 +43,6 @@ class GildedRose
                 return;
             }
 
-            if ('Sulfuras, Hand of Ragnaros' == $iValue->getName()) {
-                return;
-            }
-
             $iValue->updateQuality();
         }
     }

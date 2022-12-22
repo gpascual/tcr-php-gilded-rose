@@ -1,5 +1,7 @@
 <?php
 
+require_once 'src/SulfurasItem.php';
+
 class ItemBuilder {
 
 	var $name;
@@ -41,6 +43,11 @@ class ItemBuilder {
 
 	public function build(
 	) {
+		switch ($this->name) {
+			case 'Sulfuras, Hand of Ragnaros':
+				return new SulfurasItem($this->name, $this->sellIn, $this->quality);
+		}
+
 		return new Item(
 			$this->name,
 			$this->sellIn,
