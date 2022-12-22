@@ -12,7 +12,7 @@ class GildedRoseTest extends TestCase
             ->withQuality(5)
             ->build();
         GildedRose::updateQuality(array($unItem));
-        $this->assertEquals(4, $unItem->quality);
+        $this->assertEquals(4, $unItem->getQuality());
     }
 
     public function test_venta_pasada_calidad_degrada_doble()
@@ -22,7 +22,7 @@ class GildedRoseTest extends TestCase
             ->withQuality(5)
             ->build();
         GildedRose::updateQuality(array($unItem));
-        $this->assertEquals(3, $unItem->quality);
+        $this->assertEquals(3, $unItem->getQuality());
     }
 
     public function test_calidad_nunca_negativa()
@@ -31,7 +31,7 @@ class GildedRoseTest extends TestCase
             ->withQuality(0)
             ->build();
         GildedRose::updateQuality(array($unItem));
-        $this->assertEquals(0, $unItem->quality);
+        $this->assertEquals(0, $unItem->getQuality());
     }
 
     public function test_aged_brie_incrementa_calidad()
@@ -41,7 +41,7 @@ class GildedRoseTest extends TestCase
             ->withQuality(5)
             ->build();
         GildedRose::updateQuality(array($agedBrie));
-        $this->assertEquals(6, $agedBrie->quality);
+        $this->assertEquals(6, $agedBrie->getQuality());
     }
 
     public function test_calidad_nunca_mayor_de_50()
@@ -51,7 +51,7 @@ class GildedRoseTest extends TestCase
             ->withQuality(50)
             ->build();
         GildedRose::updateQuality(array($agedBrie));
-        $this->assertEquals(50, $agedBrie->quality);
+        $this->assertEquals(50, $agedBrie->getQuality());
     }
 
     public function test_sulfuras_no_cambia()
@@ -62,8 +62,8 @@ class GildedRoseTest extends TestCase
             ->withQuality(10)
             ->build();
         GildedRose::updateQuality(array($sulfuras));
-        $this->assertEquals(10, $sulfuras->sellIn);
-        $this->assertEquals(10, $sulfuras->quality);
+        $this->assertEquals(10, $sulfuras->getSellIn());
+        $this->assertEquals(10, $sulfuras->getQuality());
     }
 
     public static function backstage_rules()
@@ -93,6 +93,6 @@ class GildedRoseTest extends TestCase
             ->withQuality($quality)
             ->build();
         GildedRose::updateQuality(array($pass));
-        $this->assertEquals($expected, $pass->quality);
+        $this->assertEquals($expected, $pass->getQuality());
     }
 }

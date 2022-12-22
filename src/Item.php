@@ -4,9 +4,9 @@ namespace GildedRose;
 
 class Item
 {
-    public $name;
-    public $sellIn;
-    public $quality;
+    protected $name;
+    protected $sellIn;
+    protected $quality;
 
     public function __construct(
         $name,
