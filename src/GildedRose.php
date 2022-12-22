@@ -12,36 +12,26 @@ class GildedRose
     {
         foreach ($items as $iValue) {
             if ('Aged Brie' == $iValue->getName()) {
-                if ($iValue->getQuality() < 50) {
-                    $iValue->setQuality($iValue->getQuality() + 1);
-                }
+                self::increaseQuality($iValue);
 
                 $iValue->updateSellIn();
 
                 if ($iValue->getSellIn() < 0) {
-                    if ($iValue->getQuality() < 50) {
-                        $iValue->setQuality($iValue->getQuality() + 1);
-                    }
+                    self::increaseQuality($iValue);
                 }
 
                 return;
             }
 
             if ('Backstage passes to a TAFKAL80ETC concert' == $iValue->getName()) {
-                if ($iValue->getQuality() < 50) {
-                    $iValue->setQuality($iValue->getQuality() + 1);
-                }
+                self::increaseQuality($iValue);
 
                 if ($iValue->getSellIn() < 11) {
-                    if ($iValue->getQuality() < 50) {
-                        $iValue->setQuality($iValue->getQuality() + 1);
-                    }
+                    self::increaseQuality($iValue);
                 }
 
                 if ($iValue->getSellIn() < 6) {
-                    if ($iValue->getQuality() < 50) {
-                        $iValue->setQuality($iValue->getQuality() + 1);
-                    }
+                    self::increaseQuality($iValue);
                 }
 
                 $iValue->updateSellIn();
@@ -71,6 +61,13 @@ class GildedRose
     {
         if ($iValue->getQuality() > 0) {
             $iValue->setQuality($iValue->getQuality() - 1);
+        }
+    }
+
+    public static function increaseQuality(Item $iValue): void
+    {
+        if ($iValue->getQuality() < 50) {
+            $iValue->setQuality($iValue->getQuality() + 1);
         }
     }
 }
