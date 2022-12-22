@@ -4,8 +4,6 @@ require_once 'src/Item.php';
 
 class GildedRose
 {
-
-
     public static function updateQuality(
         $items
     ) {
@@ -49,48 +47,23 @@ class GildedRose
                 }
 
                 return;
-            }//end if
+            }
 
             if ('Sulfuras, Hand of Ragnaros' == $iValue->getName()) {
-                if ($iValue->getQuality() > 0) {
-                    if ('Sulfuras, Hand of Ragnaros' != $iValue->getName()) {
-                        $iValue->setQuality($iValue->getQuality() - 1);
-                    }
-                }//end if
-                // end if
-                if ('Sulfuras, Hand of Ragnaros' != $iValue->getName()) {
-                    $iValue->setSellIn($iValue->getSellIn() - 1);
-                }
+                return;
+            }
 
-                if ($iValue->getSellIn() < 0) {
-                    if ($iValue->getQuality() > 0) {
-                        if ('Sulfuras, Hand of Ragnaros' != $iValue->getName()) {
-                            $iValue->setQuality($iValue->getQuality() - 1);
-                        }
-                    }
-                }
-            } else {
-                if ($iValue->getQuality() > 0) {
-                    if ('Sulfuras, Hand of Ragnaros' != $iValue->getName()) {
-                        $iValue->setQuality($iValue->getQuality() - 1);
-                    }
-                }//end if
-                // end if
-                if ('Sulfuras, Hand of Ragnaros' != $iValue->getName()) {
-                    $iValue->setSellIn($iValue->getSellIn() - 1);
-                }
+            if ($iValue->getQuality() > 0) {
+                $iValue->setQuality($iValue->getQuality() - 1);
+            }
 
-                if ($iValue->getSellIn() < 0) {
-                    if ($iValue->getQuality() > 0) {
-                        if ('Sulfuras, Hand of Ragnaros' != $iValue->getName()) {
-                            $iValue->setQuality($iValue->getQuality() - 1);
-                        }
-                    }
+            $iValue->setSellIn($iValue->getSellIn() - 1);
+
+            if ($iValue->getSellIn() < 0) {
+                if ($iValue->getQuality() > 0) {
+                    $iValue->setQuality($iValue->getQuality() - 1);
                 }
             }
-        }//end foreach
-
-    }//end updateQuality()
-
-
-}//end class
+        }
+    }
+}
