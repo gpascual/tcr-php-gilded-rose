@@ -4,9 +4,9 @@ namespace GildedRose;
 
 class Item
 {
-    var $name;
-    var $sellIn;
-    var $quality;
+    public $name;
+    public $sellIn;
+    public $quality;
 
     public function __construct(
         $name,
@@ -23,44 +23,14 @@ class Item
         return $this->name;
     }
 
-    public function setName(
-        $name
-    ) {
-        $this->name = $name;
-    }
-
     public function getSellIn()
     {
         return $this->sellIn;
     }
 
-    public function setSellIn(
-        $sellIn
-    ) {
-        $this->sellIn = $sellIn;
-    }
-
     public function getQuality()
     {
         return $this->quality;
-    }
-
-    public function setQuality(
-        $quality
-    ) {
-        $this->quality = $quality;
-    }
-
-    public function updateSellIn()
-    {
-        $this->setSellIn($this->getSellIn() - 1);
-    }
-
-    public function decreaseQuality()
-    {
-        if ($this->getQuality() > 0) {
-            $this->setQuality($this->getQuality() - 1);
-        }
     }
 
     public function updateQuality()
@@ -74,7 +44,37 @@ class Item
         }
     }
 
-    public function increaseQuality()
+    protected function setName(
+        $name
+    ) {
+        $this->name = $name;
+    }
+
+    protected function setSellIn(
+        $sellIn
+    ) {
+        $this->sellIn = $sellIn;
+    }
+
+    protected function setQuality(
+        $quality
+    ) {
+        $this->quality = $quality;
+    }
+
+    protected function updateSellIn()
+    {
+        $this->setSellIn($this->getSellIn() - 1);
+    }
+
+    protected function decreaseQuality()
+    {
+        if ($this->getQuality() > 0) {
+            $this->setQuality($this->getQuality() - 1);
+        }
+    }
+
+    protected function increaseQuality()
     {
         if ($this->getQuality() < 50) {
             $this->setQuality($this->getQuality() + 1);

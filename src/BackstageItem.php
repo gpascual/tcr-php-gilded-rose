@@ -24,7 +24,7 @@ class BackstageItem extends Item
         }
     }
 
-    public function decreaseQuality()
+    protected function decreaseQuality()
     {
         $this->setQuality(0);
     }
