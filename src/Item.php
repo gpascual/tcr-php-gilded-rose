@@ -4,80 +4,55 @@ namespace GildedRose;
 
 class Item
 {
-    protected $name;
-    protected $sellIn;
-    protected $quality;
-
     public function __construct(
-        $name,
-        $sellIn,
-        $quality
+        protected string $name,
+        protected int $sellIn,
+        protected int $quality
     ) {
-        $this->setName($name);
-        $this->setSellIn($sellIn);
-        $this->setQuality($quality);
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function getSellIn()
+    public function getSellIn(): int
     {
         return $this->sellIn;
     }
 
-    public function getQuality()
+    public function getQuality(): int
     {
         return $this->quality;
     }
 
-    public function updateQuality()
+    public function updateQuality(): void
     {
         $this->decreaseQuality();
 
         $this->updateSellIn();
 
-        if ($this->getSellIn() < 0) {
+        if ($this->sellIn < 0) {
             $this->decreaseQuality();
         }
     }
 
-    protected function setName(
-        $name
-    ) {
-        $this->name = $name;
-    }
-
-    protected function setSellIn(
-        $sellIn
-    ) {
-        $this->sellIn = $sellIn;
-    }
-
-    protected function setQuality(
-        $quality
-    ) {
-        $this->quality = $quality;
-    }
-
-    protected function updateSellIn()
+    protected function updateSellIn(): void
     {
-        $this->setSellIn($this->getSellIn() - 1);
+        --$this->sellIn;
     }
 
-    protected function decreaseQuality()
+    protected function decreaseQuality(): void
     {
-        if ($this->getQuality() > 0) {
-            $this->setQuality($this->getQuality() - 1);
+        if ($this->quality > 0) {
+            --$this->quality;
         }
     }
 
-    protected function increaseQuality()
+    protected function increaseQuality(): void
     {
-        if ($this->getQuality() < 50) {
-            $this->setQuality($this->getQuality() + 1);
+        if ($this->quality < 50) {
+            ++$this->quality;
         }
     }
 }

@@ -9,9 +9,9 @@ use GildedRose\SulfurasItem;
 
 class ItemBuilder
 {
-    public $name;
-    public $sellIn;
-    public $quality;
+    private string $name;
+    private int $sellIn;
+    private int $quality;
 
     private function __construct()
     {
@@ -25,18 +25,20 @@ class ItemBuilder
         return new ItemBuilder();
     }
 
-    public function withName($name): static
+    public function withName(string $name): static
     {
         $this->name = $name;
         return $this;
     }
 
-    public function withSellIn($sellIn): static {
+    public function withSellIn(int $sellIn): static
+    {
         $this->sellIn = $sellIn;
         return $this;
     }
 
-    public function withQuality($quality): static {
+    public function withQuality(int $quality): static
+    {
         $this->quality = $quality;
         return $this;
     }
@@ -44,8 +46,16 @@ class ItemBuilder
     public function build(): Item
     {
         return match ($this->name) {
-            'Aged Brie' => new AgedBrieItem($this->name, $this->sellIn, $this->quality),
-            'Sulfuras, Hand of Ragnaros' => new SulfurasItem($this->name, $this->sellIn, $this->quality),
+            'Aged Brie' => new AgedBrieItem(
+                $this->name,
+                $this->sellIn,
+                $this->quality
+            ),
+            'Sulfuras, Hand of Ragnaros' => new SulfurasItem(
+                $this->name,
+                $this->sellIn,
+                $this->quality
+            ),
             'Backstage passes to a TAFKAL80ETC concert' => new BackstageItem(
                 $this->name,
                 $this->sellIn,

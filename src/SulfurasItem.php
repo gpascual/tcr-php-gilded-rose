@@ -4,15 +4,15 @@ namespace GildedRose;
 
 class SulfurasItem extends Item
 {
-    protected function increaseQuality()
+    protected function increaseQuality(): void
     {
     }
 
-    protected function decreaseQuality()
+    protected function decreaseQuality(): void
     {
     }
 
-    protected function updateSellIn()
+    protected function updateSellIn(): void
     {
     }
 }
